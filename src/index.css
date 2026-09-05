@@ -1,0 +1,347 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-carbon: #090A0C;
+    --color-charcoal: #121417;
+    --color-mineral: #1A1D23;
+    --color-chalk: #F6F7F9;
+    --color-titanium: #9EA3AE;
+    --color-sand: #D4D4D8;
+    --color-amber: #F59E0B;
+    --color-bronze: #D97706;
+    --color-emerald: #10B981;
+    --color-hairline: rgba(255,255,255,0.07);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-carbon text-chalk font-body antialiased;
+    background: linear-gradient(180deg, #090A0C 0%, #0D0F12 50%, #090A0C 100%);
+    min-height: 100vh;
+  }
+
+  * {
+    @apply border-hairline;
+  }
+
+  ::selection {
+    @apply bg-amber/30 text-chalk;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-carbon;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-mineral rounded-full border-2 border-carbon;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-charcoal;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-amber ring-offset-2 ring-offset-carbon;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24 xl:py-28;
+  }
+
+  .text-gradient-amber {
+    @apply bg-gradient-to-r from-amber via-bronze to-amber bg-clip-text text-transparent;
+  }
+
+  .text-gradient-emerald {
+    @apply bg-gradient-to-r from-emerald to-teal-400 bg-clip-text text-transparent;
+  }
+
+  .glass-card {
+    @apply bg-mineral/60 backdrop-blur-glass border border-hairline rounded-2xl shadow-elevation-2;
+  }
+
+  .glass-card-hover {
+    @apply transition-all duration-slow hover:bg-mineral/80 hover:border-amber/20 hover:shadow-elevation-3 hover:shadow-amber-glow;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 text-body font-medium text-carbon bg-amber rounded-xl
+           transition-all duration-normal hover:bg-bronze hover:shadow-amber-glow hover:-translate-y-0.5
+           active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-carbon;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 text-body font-medium text-chalk bg-mineral border border-hairline rounded-xl
+           transition-all duration-normal hover:bg-charcoal hover:border-amber/30 hover:shadow-elevation-2
+           active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-carbon;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 text-body-sm font-medium text-titanium
+           transition-all duration-fast hover:text-chalk hover:bg-mineral/50 rounded-lg;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 text-body font-semibold text-white bg-[#25D366] rounded-xl
+           transition-all duration-normal hover:bg-[#1EBE5A] hover:shadow-emerald-glow hover:-translate-y-0.5
+           active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-emerald focus-visible:ring-offset-2 focus-visible:ring-offset-carbon;
+  }
+
+  .tag-pill {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 text-caption font-medium text-titanium bg-mineral/50 border border-hairline rounded-full
+           transition-all duration-fast hover:text-chalk hover:bg-mineral hover:border-amber/20;
+  }
+
+  .tag-pill-active {
+    @apply text-carbon bg-amber border-amber hover:bg-bronze hover:border-bronze;
+  }
+
+  .tech-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 text-caption font-mono font-medium text-titanium bg-mineral/50 border border-hairline rounded-lg
+           transition-all duration-fast hover:text-sand hover:bg-mineral hover:border-amber/20;
+  }
+
+  .section-header {
+    @apply max-w-3xl mx-auto text-center mb-12 lg:mb-16;
+  }
+
+  .section-label {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 text-caption font-medium text-amber bg-amber/10 border border-amber/20 rounded-full mb-4;
+  }
+
+  .section-title {
+    @apply font-display text-display-md text-chalk font-semibold tracking-tight;
+  }
+
+  .section-description {
+    @apply mt-4 text-body-lg text-titanium leading-relaxed;
+  }
+
+  .card-interactive {
+    @apply glass-card glass-card-hover p-6 lg:p-8 relative overflow-hidden;
+  }
+
+  .card-interactive::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0 bg-gradient-to-br from-amber/5 via-transparent to-transparent opacity-0 transition-opacity duration-slow;
+  }
+
+  .card-interactive:hover::before {
+    @apply opacity-100;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3.5 text-body text-chalk bg-mineral/50 border border-hairline rounded-xl
+           placeholder:text-titanium/50
+           transition-all duration-fast
+           focus:border-amber focus:bg-mineral focus:ring-2 focus:ring-amber/20 focus:outline-none
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .label-field {
+    @apply block mb-2 text-body-sm font-medium text-sand;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+  .stagger-7 { animation-delay: 0.7s; }
+  .stagger-8 { animation-delay: 0.8s; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(var(--bg, #1A1D23), var(--bg, #1A1D23)) padding-box,
+                linear-gradient(135deg, rgba(245,158,11,0.3), rgba(217,119,6,0.2), transparent) border-box;
+    border: 1px solid transparent;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .animate-ambient-glow,
+    .animate-shimmer,
+    .animate-float,
+    .animate-beacon {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .mobile-full {
+      @apply w-full;
+    }
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+/* ==========================================================================
+   STUDIO MICRO-ANIMATIONS & AMBIENT EFFECTS
+   ========================================================================== */
+
+/* 1. Ambient Glow Pulse (For Hero & CTA Backgrounds) */
+@keyframes ambient-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.08); }
+}
+
+.animate-ambient-glow {
+  animation: ambient-pulse 8s ease-in-out infinite;
+}
+
+/* 2. Shimmer Light Beam (For Primary Buttons) */
+@keyframes btn-shimmer {
+  0% { transform: translateX(-150%); }
+  100% { transform: translateX(150%); }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: translateX(-100%);
+  animation: btn-shimmer 3.5s infinite;
+}
+
+/* 3. Floating Card Effect */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* 4. Smooth Fade-in Slide Up */
+@keyframes fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-slide-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 5. Live Beacon Ping (For Availability Badges) */
+@keyframes beacon-ping {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+
+.animate-beacon {
+  animation: beacon-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
