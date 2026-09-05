@@ -25,14 +25,15 @@ export function ContactPage() {
       })
 
       if (!response.ok) {
-        throw new Error('Project brief submission failed')
+        const result = await response.json().catch(() => ({}))
+        throw new Error(result.error || 'Project brief submission failed')
       }
 
       setModalOpen(false)
       alert('Thanks! We\'ll get back to you within 24 hours.')
     } catch (error) {
       console.error(error)
-      alert('We could not submit your brief right now. Please try again or contact us on WhatsApp.')
+      alert(`We could not submit your brief: ${error.message}`)
     }
   }
 
