@@ -116,7 +116,7 @@ Edit files in `src/data/`:
 
 ### Contact form note
 
-The project brief form currently validates in the browser, logs submitted data, and displays a success message. It does not yet persist submissions to a shared database or inbox. For production lead capture, connect the submit handler to a secure serverless endpoint or a service such as Airtable, Formspree, or Supabase. Do not expose provider API keys in the React client.
+The project brief form submits to `api/submit-project-brief.js`, a Vercel serverless function that writes records to Airtable. Configure `AIRTABLE_TOKEN`, `AIRTABLE_BASE_ID`, and `AIRTABLE_TABLE_NAME` as Vercel environment variables. The Airtable table should contain `Full Name`, `Email`, `Phone`, `Company`, `Project Type`, `Timeline`, `Message`, `Status`, and `Submitted At` fields. Never expose the Airtable token in the React client.
 
 ## Deployment
 

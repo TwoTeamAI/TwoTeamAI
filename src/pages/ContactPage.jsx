@@ -14,11 +14,26 @@ export function ContactPage() {
     return () => window.removeEventListener('open-contact-modal', handleOpenModal)
   }, [])
 
-  const handleSubmit = (formData) => {
+  const handleSubmit = async (formData) => {
     const data = Object.fromEntries(formData)
-    console.log('Form submitted:', data)
-    setModalOpen(false)
-    alert('Thanks! We\'ll get back to you within 24 hours.')
+
+    try {
+      const response = await fetch('/api/submit-project-brief', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) {
+        throw new Error('Project brief submission failed')
+      }
+
+      setModalOpen(false)
+      alert('Thanks! We\'ll get back to you within 24 hours.')
+    } catch (error) {
+      console.error(error)
+      alert('We could not submit your brief right now. Please try again or contact us on WhatsApp.')
+    }
   }
 
   return (
