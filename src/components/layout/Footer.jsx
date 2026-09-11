@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { LogoIcon } from '../shared/Logo'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -71,11 +72,8 @@ export function Footer() {
       <div className="container-custom py-16 lg:py-20">
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12 mb-12 lg:mb-16">
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-6 focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-carbon rounded-lg" aria-label="TwoTeamAI Home">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-amber" aria-hidden="true">
-                <rect width="32" height="32" rx="6" fill="#090A0C" stroke="#F59E0B" strokeWidth="1.5"/>
-                <path d="M8 16L14 22L24 10" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+            <Link to="/" className="flex items-center gap-2.5 mb-6 focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-carbon rounded-lg" aria-label="TwoTeamAI Home">
+              <LogoIcon className="w-8 h-8 shrink-0" size={32} />
               <span className="font-display text-heading-md font-semibold text-chalk tracking-tight">TwoTeamAI</span>
             </Link>
             <p className="text-body text-titanium leading-relaxed mb-6 max-w-xs">

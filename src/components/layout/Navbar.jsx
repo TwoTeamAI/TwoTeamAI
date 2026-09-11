@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { LogoIcon } from '../shared/Logo'
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -35,21 +36,10 @@ export function Navbar() {
         <div className={`flex items-center justify-between gap-4 transition-[height] duration-normal ${scrolled ? 'h-14 lg:h-16' : 'h-16 lg:h-20'}`}>
           <Link
             to="/"
-            className="flex items-center gap-2 shrink-0 focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-carbon rounded-lg"
+            className="flex items-center gap-2.5 shrink-0 focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-2 focus-visible:ring-offset-carbon rounded-lg"
             aria-label="TwoTeamAI Home"
           >
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="text-amber"
-              aria-hidden="true"
-            >
-              <rect width="32" height="32" rx="6" fill="#090A0C" stroke="#F59E0B" stroke-width="1.5"/>
-              <path d="M8 16L14 22L24 10" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <LogoIcon className="w-8 h-8 shrink-0" size={32} />
             <span className="font-display text-heading-md font-semibold text-chalk tracking-tight hidden sm:block">
               TwoTeamAI
             </span>
