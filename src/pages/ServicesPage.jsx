@@ -1,10 +1,35 @@
 import { servicesData } from '../data/servicesData'
 import { Link } from 'react-router-dom'
 import { TechBadge } from '../components/shared/TechBadge'
+import { SEOHead } from '../hooks/useSEO'
+
+const servicesJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'TwoTeamAI Services',
+  description: 'Six core product engineering services offered by TwoTeamAI',
+  url: 'https://twoteamai.vercel.app/services',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Web Development', url: 'https://twoteamai.vercel.app/services#web-development' },
+    { '@type': 'ListItem', position: 2, name: 'SaaS Solutions', url: 'https://twoteamai.vercel.app/services#saas-solutions' },
+    { '@type': 'ListItem', position: 3, name: 'AI Solutions', url: 'https://twoteamai.vercel.app/services#ai-solutions' },
+    { '@type': 'ListItem', position: 4, name: 'WhatsApp Automation', url: 'https://twoteamai.vercel.app/services#whatsapp-automation' },
+    { '@type': 'ListItem', position: 5, name: 'Chatbot Assistants', url: 'https://twoteamai.vercel.app/services#chatbot-assistants' },
+    { '@type': 'ListItem', position: 6, name: 'Software Modernization', url: 'https://twoteamai.vercel.app/services#software-modernization' },
+  ],
+}
+
 
 export function ServicesPage() {
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title="Services — Web Development, SaaS, AI & Automation"
+        description="Six core product engineering services: web app development, SaaS platforms, AI & RAG solutions, WhatsApp automation, AI chatbots, and software modernization. Full lifecycle ownership."
+        keywords="web development services India, SaaS development company, AI solutions provider, WhatsApp business automation, chatbot development, software modernization, React development, Node.js backend"
+        canonical="/services"
+        jsonLd={servicesJsonLd}
+      />
       <section className="section-padding pt-28 lg:pt-32 relative" aria-labelledby="services-hero-title">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(245,158,11,0.06)_0%,_transparent_70%)]" aria-hidden="true" />
         <div className="container-custom relative">

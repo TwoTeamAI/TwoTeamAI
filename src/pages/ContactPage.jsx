@@ -1,5 +1,61 @@
 import { useState, useEffect } from 'react'
 import { ContactModal } from '../components/shared/ContactModal'
+import { SEOHead } from '../hooks/useSEO'
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How does the discovery workshop work?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A 2-week structured sprint where we validate your problem, define scope, create a technical plan, and give you a detailed proposal for the build phase. No obligation to continue.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "What if I don't have a clear scope yet?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'That\'s exactly what discovery is for. We help you go from "I have an idea" to a detailed product spec with architecture, timeline, and budget.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you work with non-technical founders?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Many of our clients are domain experts, not engineers. We translate business problems into technical solutions and keep you informed without jargon.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "What's your typical engagement model?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Phased projects with weekly demos. You approve each phase before the next starts. For ongoing work, we offer monthly retainers with priority support.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can you work with our existing team?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Absolutely. We can augment your team, take ownership of a module, or act as your external product engineering partner.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What happens after launch?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We offer ongoing partnerships: monitoring, iteration planning, feature development, scaling support. Many clients stay with us for years.',
+      },
+    },
+  ],
+}
 
 export function ContactPage() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -39,6 +95,13 @@ export function ContactPage() {
 
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title="Contact TwoTeamAI — Start Your Project Today"
+        description="Get in touch with TwoTeamAI to discuss your idea. No sales scripts. Chat on WhatsApp, fill a project brief, or email us. We respond within 24 hours. Remote team based in India."
+        keywords="hire software engineer India, contact TwoTeamAI, start a project, project brief, web development inquiry, WhatsApp consultation, software development contact, tech studio India"
+        canonical="/contact"
+        jsonLd={faqJsonLd}
+      />
       <section className="section-padding pt-28 lg:pt-32 relative" aria-labelledby="contact-hero-title">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(245,158,11,0.06)_0%,_transparent_70%)]" aria-hidden="true" />
         <div className="container-custom relative">

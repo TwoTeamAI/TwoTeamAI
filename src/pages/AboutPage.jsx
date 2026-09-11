@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { SEOHead } from '../hooks/useSEO'
 
 export function AboutPage() {
   const values = [
@@ -42,6 +43,12 @@ export function AboutPage() {
 
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title="About TwoTeamAI — Senior Engineers, Zero Handoffs, Full Ownership"
+        description="TwoTeamAI is a focused product engineering studio — two senior engineers, one designer, zero bureaucracy. We own your project from first sketch to millionth user. Based in India, remote-first."
+        keywords="about TwoTeamAI, senior software engineers India, product engineering studio, remote development team, full stack engineers, AI engineers India, software agency India, freelance engineering team"
+        canonical="/about"
+      />
       <section className="section-padding pt-28 lg:pt-32 relative" aria-labelledby="about-hero-title">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(245,158,11,0.06)_0%,_transparent_70%)]" aria-hidden="true" />
         <div className="container-custom relative">

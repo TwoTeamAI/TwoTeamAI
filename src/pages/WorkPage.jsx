@@ -2,10 +2,34 @@ import { projectsData } from '../data/projectsData'
 import { Link } from 'react-router-dom'
 import { TechBadge } from '../components/shared/TechBadge'
 import { ProjectVisual } from '../components/shared/ProjectVisual'
+import { SEOHead } from '../hooks/useSEO'
+
+const workJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'TwoTeamAI Portfolio',
+  description: 'Case studies of projects built by TwoTeamAI — logistics marketplace, enterprise operations platform, AI knowledge assistant',
+  url: 'https://twoteamai.vercel.app/work',
+  itemListElement: projectsData.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: p.title,
+    url: `https://twoteamai.vercel.app/work/${p.id}`,
+    description: p.tagline,
+  })),
+}
+
 
 export function WorkPage() {
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title="Portfolio — Case Studies & Projects"
+        description="Explore flagship projects built by TwoTeamAI: CargoFlow logistics marketplace, enterprise operations platform, and an AI knowledge assistant. See our full lifecycle engineering in action."
+        keywords="software portfolio, case studies, web app case study, logistics software, SaaS platform example, AI knowledge base, product engineering work, React Next.js projects India"
+        canonical="/work"
+        jsonLd={workJsonLd}
+      />
       <section className="section-padding pt-28 pb-8 lg:pt-32 lg:pb-12 relative" aria-labelledby="work-hero-title">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(245,158,11,0.06)_0%,_transparent_70%)]" aria-hidden="true" />
         <div className="container-custom relative">

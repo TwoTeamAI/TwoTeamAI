@@ -1,9 +1,17 @@
 import { solutionsData } from '../data/solutionsData'
 import { Link } from 'react-router-dom'
+import { SEOHead } from '../hooks/useSEO'
 
 export function SolutionsPage() {
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title="Solutions — Problem-First Engineering for Startups & Enterprises"
+        description="Tailored engineering solutions for your exact situation: launch a startup MVP, scale your SaaS, modernize legacy software, or build AI-powered workflows. Problem-first approach."
+        keywords="startup MVP development, SaaS scaling, legacy software modernization, AI workflow automation, product engineering solutions, technical co-founder India, software consulting"
+        canonical="/solutions"
+      />
+
       <section className="section-padding pt-38 lg:pt-32 relative" aria-labelledby="solutions-hero-title">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(245,158,11,0.06)_0%,_transparent_70%)]" aria-hidden="true" />
         <div className="container-custom relative">

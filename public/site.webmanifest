@@ -1,0 +1,18 @@
+{
+  "name": "TwoTeamAI",
+  "short_name": "TwoTeamAI",
+  "description": "Product Engineering Studio — Web, SaaS, AI & Automation",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090A0C",
+  "theme_color": "#F59E0B",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

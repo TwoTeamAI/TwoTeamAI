@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { projectsData, getProjectById } from '../data/projectsData'
 import { TechBadge } from '../components/shared/TechBadge'
 import { Link } from 'react-router-dom'
+import { SEOHead } from '../hooks/useSEO'
 
 export function CaseStudyDetailPage() {
   const { id } = useParams()
@@ -19,8 +20,39 @@ export function CaseStudyDetailPage() {
     )
   }
 
+  const techNames = project.techStack.map(t => t.name).join(', ')
+  const caseStudyJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: `${project.title} — Case Study`,
+    description: project.tagline,
+    url: `https://twoteamai.vercel.app/work/${project.id}`,
+    author: { '@type': 'Organization', name: 'TwoTeamAI' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'TwoTeamAI',
+      logo: { '@type': 'ImageObject', url: 'https://twoteamai.vercel.app/og-image.jpg' },
+    },
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://twoteamai.vercel.app' },
+        { '@type': 'ListItem', position: 2, name: 'Work', item: 'https://twoteamai.vercel.app/work' },
+        { '@type': 'ListItem', position: 3, name: project.title, item: `https://twoteamai.vercel.app/work/${project.id}` },
+      ],
+    },
+  }
+
   return (
     <div className="min-h-screen">
+      <SEOHead
+        title={`${project.title} — ${project.category} Case Study`}
+        description={`${project.tagline} — Built with ${techNames}. ${project.challenge?.slice(0, 100) || ''}`}
+        keywords={`${project.title}, ${project.industry}, ${project.category}, ${techNames}, case study, TwoTeamAI`}
+        canonical={`/work/${project.id}`}
+        jsonLd={caseStudyJsonLd}
+      />
+
       <section className="section-padding pt-28 lg:pt-32 relative" aria-labelledby="project-title">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(245,158,11,0.06)_0%,_transparent_70%)]" aria-hidden="true" />
         <div className="container-custom relative">
